@@ -1,0 +1,126 @@
+Here you receive the documentation for the API.
+
+You will start with synchronizing the products.
+
+I have a manual in Dutch https://5857-rbpapendrecht.easyposonline.nl/apidocs?locale=nl.
+
+The easyPOS Online API is a RESTful API. The messages are communicated JSON messages.
+
+The documentation is interfactief, on the pages of the relevant API calls is usually a possibility to carry out directly to the API
+
+ATTENTION, the test function on the API pages provide direct access to the live database which is logged in!
+
+Use REST API
+
+Endpoint URL format
+
+The specification is as follows:
+
+GET /api/v1/relations/:nr
+
+
+Starting with the HTTP command, followed by the path. In some URL's are used the double-point, in order to indicate a parameter. For example, in the above Example: No. be replaced by its relationship to request number.
+
+So, for example, to request relationship with number 1 can be used oder standing link:
+
+/api/v1/relations/1
+
+Authorization
+
+To communicate with API, it is necessary to send an authorization token. The way which is preferred is to make use of the HTTP header Authoriztion:
+
+Authorization: Token token="WS23ezf1E1nCqpJhdeS6PDz8q4DnpjJH"
+
+
+Should it not be possible to send along the above header to the server, then it is also possible to give via the URL (or as a post-variable) the token. The name for the POST or GET variable is auth_token.
+
+/api/v1/relations?auth_token=WS23ezf1E1nCqpJhdeS6PDz8q4DnpjJH
+
+
+JQuery example POST request
+
+The example below performs an AJAX post request and displays an alert of the response header and body, similar to the way it is implemented in this APIDOCS.
+
+$.ajax({
+    url: "https://demo.easyposonline.nl/api/v1/relations",
+    headers: { "Authorization": "Token token=\"WS23ezf1E1nCqpJhdeS6PDz8q4DnpjJH\"" },
+    type: "POST",
+    data: '{ "name": "value", "nr": 12 }',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+ 
+    success: function(data,textStatus,xhr) {
+      result = "HTTP " + data['status'] + " " + data['statusText'] + "\n";
+      result += data.getAllResponseHeaders() + "\n\n"
+ 
+      if( data.responseJSON ) {
+        result += JSON.stringify( data.responseJSON, undefined, 2 ) 
+      } else {
+        result += data.responseText
+      }
+      alert( result );
+    }
+}); 
+
+HTTP Command circumnavigation
+
+Some HTTP communication methods / browsers do not support PUT and DELETE. To circumvent this limitation, it is possible to also give them the command using a parameter called '_method. Here it may be put HTTP command. For example: PUT / Relations / 12 _method = PUT?
+
+Character Encoding
+
+The entire API communication is using. UTF-8 character set.
+
+Endpoint API Overview
+
+Below is a list of all endpoints. In the menu, the left menu is omitted the prefix / api + version number.
+
+Endpoint Description
+GET auth / permissions Question active permissions on
+GET auth / modules Request the active modules
+GET product_feeds / products Displays a list of all products back.
+GET product_feeds / barcode Retrieving an item using (EAN) barcode number.
+GET product_feeds / deletions Retrieve list of articles that have been deleted.
+GET product_feeds / Retrieve main groups
+GET product_feeds / brands Retrieve brands
+GET product_feeds / target groups Retrieve audiences
+GET product_feeds / images Acquire images
+GET product_feeds / image_deletions Retrieve list of images that have been deleted.
+GET relations / parse_full_name Splitting a full name in separate fields.
+POST sale_ticket Submission sale
+
+Manual
+
+https://5857-rbpapendrecht.easyposonline.nl/apidocs?locale=nl
+
+Click product feeds for explanation of the product feeds.
+
+You can get a full list of all products and all specifications and add new products, edit edited products and delete deleted products with WP All Import and the Woocommerce Products add-on.
+
+We need:
+
+- Add new products
+- Edit edited products
+- Delete deleted products
+- Insert new orders and customers
+
+Url of the API https://5857-rbpapendrecht.easyposonline.nl
+
+User name 5857-rb-apidata1@epsw.nl
+
+Password api1-rb-hbgrt6n
+
+API-token rvHYV3ys2R3sQd1TgQzPwxCfgDpFRTZ8
+
+The API-token is used for the communication.
+
+If you have questions because you don't understand the Dutch manual please contact us.
+
+I will install Woocommerce, WP All Import and the WP All Import add-on.
+
+
+
+Please note: The manual is in Dutch.
+I have tried to translate as much as I can in Dutch.
+If you need more translated please contact us.
+Google Translate will help you
+First we need to have the product synchronisation
